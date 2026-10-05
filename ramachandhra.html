@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Farm Link - Fresh Products</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    font-family:Segoe UI,Arial;
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#f3f6f5;
+    animation:fadeIn 1s ease;
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:#2f8f5b;
+    color:white;
+
+    padding:15px 40px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+nav h2{
+    margin:0;
+    cursor:pointer;
+}
+
+nav a{
+    color:white;
+    margin-left:20px;
+    text-decoration:none;
+    font-weight:500;
+    cursor:pointer;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#e6ffe9;
+    background:#1f6f43;
+    padding:6px 12px;
+    border-radius:6px;
+    transform:translateY(-2px);
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    text-align:center;
+    padding:90px 20px;
+    background:white;
+}
+
+.hero h1{
+    font-size:42px;
+    color:#2f8f5b;
+    animation:slideDown .8s ease;
+}
+
+.hero p{
+    color:#666;
+    font-size:18px;
+}
+
+.hero button{
+    margin-top:25px;
+    padding:14px 32px;
+    background:#2f8f5b;
+    border:none;
+    color:white;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:16px;
+    transition:.4s;
+}
+
+.hero button:hover{
+    transform:scale(1.1);
+    background:#1f6f43;
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+    padding:50px;
+    animation:fadeUp .8s ease;
+}
+
+/* ================= PRODUCTS ================= */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:14px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.12);
+
+    text-align:center;
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.05);
+}
+
+.card img{
+    width:100%;
+    height:170px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+.card button{
+    margin-top:12px;
+    width:100%;
+    padding:10px;
+
+    background:#2f8f5b;
+    border:none;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.card button:hover{
+    background:#1f6f43;
+}
+
+/* ================= SEARCH ================= */
+
+.search-area{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.search-area input{
+    width:300px;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.search-area button{
+    padding:12px 20px;
+    margin-left:5px;
+
+    background:#2f8f5b;
+    color:white;
+    border:none;
+    border-radius:8px;
+}
+
+/* ================= FORM ================= */
+
+.form-card{
+    max-width:450px;
+    margin:auto;
+
+    background:white;
+    padding:35px;
+
+    border-radius:16px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+
+.form-card input,
+.form-card select{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+}
+
+.form-card button{
+    width:100%;
+    padding:12px;
+
+    background:#2f8f5b;
+    color:white;
+
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.form-card button:hover{
+    background:#1f6f43;
+    transform:scale(1.05);
+}
+
+.option-group{
+    margin:15px 0;
+    padding:15px;
+    background:#f3f6f5;
+    border-radius:10px;
+}
+
+.option-group label{
+    display:block;
+    margin:10px 0;
+}
+
+/* ================= CART ================= */
+
+.cart-item{
+    background:white;
+    padding:18px;
+    margin:12px 0;
+
+    border-radius:10px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    box-shadow:0 6px 20px rgba(0,0,0,.1);
+}
+
+.cart-actions{
+    text-align:right;
+    margin-top:20px;
+}
+
+.cart-actions button{
+    padding:12px 30px;
+
+    background:#2f8f5b;
+    color:white;
+
+    border:none;
+    border-radius:30px;
+
+    cursor:pointer;
+    font-size:16px;
+}
+
+/* ================= LOGIN ================= */
+
+#loginBox{
+    max-width:380px;
+    margin:130px auto;
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:20px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+
+    text-align:center;
+
+    animation:fadeUp .8s ease;
+}
+
+#loginBox input[type="text"],
+#loginBox input[type="password"]{
+    width:100%;
+    margin:10px 0;
+    padding:12px;
+}
+
+#loginButton{
+    width:100%;
+    padding:12px;
+
+    background:#2f8f5b;
+    color:white;
+
+    border:none;
+    border-radius:8px;
+}
+
+.warning{
+    color:red;
+    text-align:center;
+    margin-top:10px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#2f8f5b;
+    color:white;
+
+    text-align:center;
+
+    padding:18px;
+    margin-top:60px;
+}
+
+/* ================= UTILS ================= */
+
+button{
+    cursor:pointer;
+}
+
+.hidden{
+    display:none;
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes fadeIn{
+    from{opacity:0}
+    to{opacity:1}
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px)
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes slideDown{
+    from{
+        opacity:0;
+        transform:translateY(-40px)
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- ==================================================
+     LOGIN
+================================================== -->
+
+<div id="loginBox">
+
+    <h2 id="loginHeading">
+        Farm Link Login
+    </h2>
+
+    <input
+        id="email"
+        name="email"
+        type="text"
+        placeholder="Email">
+
+    <input
+        id="password"
+        name="password"
+        type="password"
+        placeholder="Password">
+
+    <!-- CHECKBOX FOR SELENIUM -->
+    <label>
+        <input
+            id="rememberMe"
+            name="rememberMe"
+            type="checkbox">
+
+        Remember me
+    </label>
+
+    <br><br>
+
+    <button
+        id="loginButton"
+        name="loginButton"
+        onclick="login()">
+
+        Login
+
+    </button>
+
+    <div
+        id="loginError"
+        class="warning">
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     APPLICATION
+================================================== -->
+
+<div id="app" class="hidden">
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+
+    <h2 id="siteLogo">
+        Farm Link
+    </h2>
+
+    <div>
+
+        <a
+            id="shopLink"
+            href="#shop"
+            onclick="show('shop')">
+            Shop
+        </a>
+
+        <a
+            id="cartLink"
+            href="#cart"
+            onclick="show('cart')">
+
+            Cart
+            (<span id="cartCount">0</span>)
+
+        </a>
+
+        <a
+            id="farmerLink"
+            href="#farmer"
+            onclick="show('farmer')">
+
+            Farmer
+
+        </a>
+
+        <a
+            id="logoutLink"
+            href="#"
+            onclick="logout()">
+
+            Logout
+
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<div class="hero">
+
+    <h1 id="mainHeading">
+        Buy Fresh. Buy Local.
+    </h1>
+
+    <p id="mainDescription">
+        Connecting Farmers Directly with Consumers
+    </p>
+
+    <button
+        id="exploreButton"
+        onclick="show('shop')">
+
+        Explore Products
+
+    </button>
+
+</div>
+
+
+<!-- ==================================================
+     SHOP
+================================================== -->
+
+<section id="shop">
+
+    <h2 id="shopHeading">
+        Available Vegetables
+    </h2>
+
+
+    <!-- SEARCH -->
+
+    <div class="search-area">
+
+        <input
+            id="searchBox"
+            name="search"
+            type="text"
+            placeholder="Search products">
+
+        <button
+            id="searchButton"
+            onclick="searchProducts()">
+
+            Search
+
+        </button>
+
+        <button
+            id="clearSearch"
+            onclick="clearSearch()">
+
+            Clear
+
+        </button>
+
+    </div>
+
+
+    <!-- PRODUCTS -->
+
+    <div
+        class="products"
+        id="productGrid">
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     CART
+================================================== -->
+
+<section
+    id="cart"
+    class="hidden">
+
+    <h2 id="cartHeading">
+        Your Cart
+    </h2>
+
+    <div id="cartItems">
+    </div>
+
+    <div class="cart-actions">
+
+        <button
+            id="buyNow"
+            onclick="showCheckout()">
+
+            Proceed to Checkout
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     CHECKOUT
+================================================== -->
+
+<section
+    id="checkout"
+    class="hidden">
+
+    <h2>
+        Checkout
+    </h2>
+
+    <div class="form-card">
+
+        <input
+            id="customerName"
+            name="customerName"
+            type="text"
+            placeholder="Full Name">
+
+        <input
+            id="customerEmail"
+            name="customerEmail"
+            type="text"
+            placeholder="Email">
+
+        <input
+            id="address"
+            name="address"
+            type="text"
+            placeholder="Delivery Address">
+
+
+        <!-- RADIO BUTTONS -->
+
+        <div class="option-group">
+
+            <strong>
+                Payment Method
+            </strong>
+
+            <label>
+
+                <input
+                    id="cashPayment"
+                    name="payment"
+                    type="radio"
+                    value="cash">
+
+                Cash on Delivery
+
+            </label>
+
+            <label>
+
+                <input
+                    id="onlinePayment"
+                    name="payment"
+                    type="radio"
+                    value="online">
+
+                Online Payment
+
+            </label>
+
+        </div>
+
+
+        <!-- CHECKBOX -->
+
+        <div class="option-group">
+
+            <label>
+
+                <input
+                    id="terms"
+                    name="terms"
+                    type="checkbox">
+
+                I agree to the terms and conditions
+
+            </label>
+
+        </div>
+
+
+        <button
+            id="placeOrder"
+            onclick="placeOrder()">
+
+            Place Order
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     FARMER
+================================================== -->
+
+<section
+    id="farmer"
+    class="hidden">
+
+    <h2 id="farmerHeading">
+        Farmer Dashboard
+    </h2>
+
+    <div class="form-card">
+
+        <label for="pname">
+            Product Name
+        </label>
+
+        <input
+            id="pname"
+            name="productName"
+            type="text"
+            placeholder="Product Name">
+
+
+        <label for="pprice">
+            Price
+        </label>
+
+        <input
+            id="pprice"
+            name="productPrice"
+            type="number"
+            placeholder="Price (₹)">
+
+
+        <!-- DROPDOWN -->
+
+        <label for="category">
+            Product Category
+        </label>
+
+        <select
+            id="category"
+            name="category">
+
+            <option value="">
+                Select Category
+            </option>
+
+            <option value="vegetables">
+                Vegetables
+            </option>
+
+            <option value="fruits">
+                Fruits
+            </option>
+
+            <option value="grains">
+                Grains
+            </option>
+
+        </select>
+
+
+        <!-- FILE UPLOAD -->
+
+        <label for="pfile">
+            Product Image
+        </label>
+
+        <input
+            type="file"
+            id="pfile"
+            name="productFile"
+            accept="image/*">
+
+
+        <!-- IMAGE URL -->
+
+        <label for="pimg">
+            Image URL
+        </label>
+
+        <input
+            id="pimg"
+            name="imageUrl"
+            type="text"
+            placeholder="Image URL (optional)">
+
+
+        <button
+            id="uploadProduct"
+            onclick="addProduct()">
+
+            Upload Product
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    © 2026 Farm Link |
+    Empowering Farmers Digitally 🌱
+
+</footer>
+
+
+</div>
+
+
+<script>
+
+/* ==================================================
+   LOGIN
+================================================== */
+
+const emailPattern =
+    /^kiranmanda68567@gmail\.com$/;
+
+const passPattern =
+    /^1234$/;
+
+
+function login(){
+
+    let email =
+        document.getElementById("email");
+
+    let password =
+        document.getElementById("password");
+
+    let loginBox =
+        document.getElementById("loginBox");
+
+    let app =
+        document.getElementById("app");
+
+    let loginError =
+        document.getElementById("loginError");
+
+
+    if(
+        emailPattern.test(email.value)
+        &&
+        passPattern.test(password.value)
+    ){
+
+        loginBox.classList.add("hidden");
+
+        app.classList.remove("hidden");
+
+        loadProducts();
+
+        history.replaceState(
+            null,
+            "",
+            "#shop"
+        );
+
+    }
+    else{
+
+        loginError.innerText =
+            "Invalid login credentials";
+
+    }
+
+}
+
+
+/* ==================================================
+   LOGOUT
+================================================== */
+
+function logout(){
+
+    cart=[];
+
+    document.getElementById(
+        "cartCount"
+    ).innerText=0;
+
+    document.getElementById(
+        "app"
+    ).classList.add("hidden");
+
+    document.getElementById(
+        "loginBox"
+    ).classList.remove("hidden");
+
+}
+
+
+/* ==================================================
+   PRODUCTS
+================================================== */
+
+let products=[
+
+    {
+        name:"Tomatoes",
+        price:40,
+        img:"tomato.jpg"
+    },
+
+    {
+        name:"Carrots",
+        price:30,
+        img:"carrot.jpg"
+    },
+
+    {
+        name:"Spinach",
+        price:20,
+        img:"spinach.jpg"
+    },
+
+    {
+        name:"Potatoes",
+        price:35,
+        img:"potato.jpg"
+    },
+
+    {
+        name:"Onions",
+        price:45,
+        img:"onion.jpg"
+    },
+
+    {
+        name:"Cabbage",
+        price:25,
+        img:"cabbage.jpg"
+    }
+
+];
+
+
+let cart=[];
+
+
+/* ==================================================
+   LOAD PRODUCTS
+================================================== */
+
+function loadProducts(){
+
+    let productGrid =
+        document.getElementById(
+            "productGrid"
+        );
+
+    productGrid.innerHTML="";
+
+
+    products.forEach((p,i)=>{
+
+        productGrid.innerHTML+=`
+
+        <div
+            class="card"
+            data-product="${p.name}">
+
+            <img
+                src="${p.img}"
+                alt="${p.name}">
+
+            <h3
+                class="productName">
+                ${p.name}
+            </h3>
+
+            <p
+                class="productPrice">
+                ₹${p.price}
+            </p>
+
+            <button
+                id="addToCart-${i}"
+                class="addCartButton"
+                name="addToCart"
+                onclick="addToCart(${i})">
+
+                Add to Cart
+
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+/* ==================================================
+   SEARCH
+================================================== */
+
+function searchProducts(){
+
+    let search =
+        document.getElementById(
+            "searchBox"
+        ).value.toLowerCase();
+
+
+    let filtered =
+        products.filter(
+            p =>
+            p.name
+            .toLowerCase()
+            .includes(search)
+        );
+
+
+    let productGrid =
+        document.getElementById(
+            "productGrid"
+        );
+
+    productGrid.innerHTML="";
+
+
+    filtered.forEach(p=>{
+
+        let index =
+            products.indexOf(p);
+
+
+        productGrid.innerHTML+=`
+
+        <div
+            class="card"
+            data-product="${p.name}">
+
+            <img
+                src="${p.img}"
+                alt="${p.name}">
+
+            <h3 class="productName">
+                ${p.name}
+            </h3>
+
+            <p class="productPrice">
+                ₹${p.price}
+            </p>
+
+            <button
+                id="addToCart-${index}"
+                class="addCartButton"
+                onclick="addToCart(${index})">
+
+                Add to Cart
+
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+/* ==================================================
+   CLEAR SEARCH
+================================================== */
+
+function clearSearch(){
+
+    let search =
+        document.getElementById(
+            "searchBox"
+        );
+
+    search.clear;
+
+    search.value="";
+
+    loadProducts();
+
+}
+
+
+/* ==================================================
+   ADD TO CART
+================================================== */
+
+function addToCart(i){
+
+    cart.push(products[i]);
+
+    document.getElementById(
+        "cartCount"
+    ).innerText =
+        cart.length;
+
+}
+
+
+/* ==================================================
+   LOAD CART
+================================================== */
+
+function loadCart(){
+
+    let cartItems =
+        document.getElementById(
+            "cartItems"
+        );
+
+    cartItems.innerHTML="";
+
+
+    cart.forEach((c,i)=>{
+
+        cartItems.innerHTML+=`
+
+        <div class="cart-item">
+
+            <span
+                class="cartProduct">
+
+                ${c.name} - ₹${c.price}
+
+            </span>
+
+            <button
+                id="remove-${i}"
+                onclick="removeFromCart(${i})">
+
+                Remove
+
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+/* ==================================================
+   REMOVE
+================================================== */
+
+function removeFromCart(i){
+
+    cart.splice(i,1);
+
+    document.getElementById(
+        "cartCount"
+    ).innerText =
+        cart.length;
+
+    loadCart();
+
+}
+
+
+/* ==================================================
+   CHECKOUT
+================================================== */
+
+function showCheckout(){
+
+    if(cart.length===0){
+
+        alert("Cart is empty!");
+
+        return;
+
+    }
+
+    show("checkout");
+
+}
+
+
+/* ==================================================
+   PLACE ORDER
+================================================== */
+
+function placeOrder(){
+
+    let terms =
+        document.getElementById(
+            "terms"
+        );
+
+    let cash =
+        document.getElementById(
+            "cashPayment"
+        );
+
+    let online =
+        document.getElementById(
+            "onlinePayment"
+        );
+
+
+    if(!terms.isSelected){
+
+        if(!terms.checked){
+
+            alert(
+                "Please accept terms"
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    if(
+        !cash.checked &&
+        !online.checked
+    ){
+
+        alert(
+            "Please select payment method"
+        );
+
+        return;
+
+    }
+
+
+    alert(
+        "Order placed successfully!"
+    );
+
+
+    cart=[];
+
+    document.getElementById(
+        "cartCount"
+    ).innerText=0;
+
+    show("shop");
+
+}
+
+
+/* ==================================================
+   ADD PRODUCT
+================================================== */
+
+function addProduct(){
+
+    let pname =
+        document.getElementById(
+            "pname"
+        );
+
+    let pprice =
+        document.getElementById(
+            "pprice"
+        );
+
+    let pfile =
+        document.getElementById(
+            "pfile"
+        );
+
+    let pimg =
+        document.getElementById(
+            "pimg"
+        );
+
+
+    if(
+        products.some(
+            p =>
+            p.name.toLowerCase()
+            ===
+            pname.value.toLowerCase()
+        )
+    ){
+
+        alert(
+            "Product already exists!"
+        );
+
+        return;
+
+    }
+
+
+    if(
+        pname.value==="" ||
+        pprice.value===""
+    ){
+
+        alert(
+            "Please enter product name and price"
+        );
+
+        return;
+
+    }
+
+
+    if(pfile.files[0]){
+
+        let reader =
+            new FileReader();
+
+
+        reader.onload=function(e){
+
+            products.push({
+
+                name:pname.value,
+
+                price:pprice.value,
+
+                img:e.target.result
+
+            });
+
+            loadProducts();
+
+        };
+
+
+        reader.readAsDataURL(
+            pfile.files[0]
+        );
+
+    }
+
+    else{
+
+        products.push({
+
+            name:pname.value,
+
+            price:pprice.value,
+
+            img:
+            pimg.value ||
+            "https://via.placeholder.com/400"
+
+        });
+
+        loadProducts();
+
+    }
+
+
+    pname.value="";
+
+    pprice.value="";
+
+    pimg.value="";
+
+    pfile.value="";
+
+}
+
+
+/* ==================================================
+   NAVIGATION
+================================================== */
+
+function show(id){
+
+    let sections=[
+        "shop",
+        "cart",
+        "farmer",
+        "checkout"
+    ];
+
+
+    sections.forEach(
+        s =>
+        document
+        .getElementById(s)
+        .classList
+        .add("hidden")
+    );
+
+
+    document
+        .getElementById(id)
+        .classList
+        .remove("hidden");
+
+
+    if(id==="shop"){
+        loadProducts();
+    }
+
+
+    if(id==="cart"){
+        loadCart();
+    }
+
+}
+
+
+/* ==================================================
+   HANDLE BROWSER BACK/FORWARD
+================================================== */
+
+window.addEventListener(
+    "hashchange",
+    function(){
+
+        let id =
+            location.hash.substring(1);
+
+        if(
+            ["shop","cart","farmer","checkout"]
+            .includes(id)
+        ){
+
+            show(id);
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
